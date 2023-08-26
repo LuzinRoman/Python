@@ -39,3 +39,16 @@
  
 # if not found_numbers:
 #     print('Числа X и Y не удалось найти.')
+
+# Задача 14: Требуется вывести все целые степени двойки (т.е. числа вида 2k), 
+# не превосходящие числа N.
+
+N = int(input("Введите число N: "))
+
+k = 1
+degree_of_two = 2
+
+while degree_of_two <= N:
+    print(degree_of_two)
+    k += 1
+    degree_of_two = 2 ** k
