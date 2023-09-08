@@ -96,16 +96,39 @@
 # собрать за один заход собирающий модуль, 
 # находясь перед некоторым кустом заданной во входном файле грядки.
 
-N = int(input("Введите количество кустов черники: "))
-a = []
-for i in range(N):
-    a.append(int(input("Введите урожайность куста черники: ")))
+# N = int(input("Введите количество кустов черники: "))
+# a = []
+# for i in range(N):
+#     a.append(int(input("Введите урожайность куста черники: ")))
 
-max_berries = 0
+# max_berries = 0
 
-for i in range(N):
-    total_berries = a[i] + a[(i-1) % N] + a[(i+1) % N]
-    if total_berries > max_berries:
-        max_berries = total_berries
+# for i in range(N):
+#     total_berries = a[i] + a[(i-1) % N] + a[(i+1) % N]
+#     if total_berries > max_berries:
+#         max_berries = total_berries
 
-print("Максимальное количество ягод:", max_berries)
+# print("Максимальное количество ягод:", max_berries)
+
+
+# Задача 30:  Заполните массив элементами арифметической прогрессии. 
+# Её первый элемент, разность и количество элементов нужно ввести с клавиатуры. 
+# Формула для получения n-го члена прогрессии: an = a1 + (n-1) * d.
+# Каждое число вводится с новой строки.
+
+# Ввод данных с клавиатуры
+a1 = int(input("Введите первый элемент прогрессии: \n"))
+d = int(input("Введите разность прогрессии: \n"))
+n = int(input("Введите количество элементов: \n"))
+
+# Создание массива
+progression = []
+
+# Заполнение массива элементами прогрессии
+for i in range(n):
+    an = a1 - (i * d)
+    progression.append(an)
+
+# Вывод элементов массива
+for an in progression:
+    print(an)
