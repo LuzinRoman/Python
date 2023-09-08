@@ -141,12 +141,10 @@ max_val = int(input("Введите максимальное значение: "
 
 elements = []
 
-# Поиск индексов элементов, значения которых принадлежат заданному диапазону
 for i in range(len(arr)):
     if arr[i] >= min_val and arr[i] <= max_val:
         elements.append(i)
 
-# Вывод индексов элементов
 print("Индексы элементов, значения которых принадлежат заданному диапазону:")
 for index in elements:
     print(index)
