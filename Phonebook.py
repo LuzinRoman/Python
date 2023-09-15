@@ -1,15 +1,12 @@
 def write_name():
     name = input('Введите имя: ')
     return name
-
 def write_surname():
     surname = input('Введите фамилию: ')
     return surname
-
 def write_phone():
     phone = input('Введите телефон: ')
     return phone
-
 def write_adress():
     adress = input('Введите адрес: ')
     return adress
@@ -22,15 +19,12 @@ def input_data(a=None):
     with open('phonebook.txt', 'a', encoding='utf-8') as data:
         data.write(f'{name} {surname}: {phone}\n{adress}\n\n')
 
-
 def print_data():
     with open('phonebook.txt', 'r', encoding='utf-8') as data:
-        print(data)
-    data_first = data.readlines()
-    print(data_first)
-    for line in data_first:
-        print(line, end='')
-
+        data_first = data.readlines()
+        print(data_first)
+        for line in data_first:
+            print(line, end='')
 
 def search_line():
     search = input('Введите данные для поиска: ')
@@ -40,36 +34,57 @@ def search_line():
         print(temp)
         data_first = ''.join(temp).split('\n\n')
         print(data_first)
-    for line in data_first:
-        if search in line:
-            print(line)
+        for line in data_first:
+            if search in line:
+                print(line)
 
 # input_data()
 # print_data()
-search_line()
+# search_line()
 
-def update_contact(full_name):
-    new_name = write_name()
-    new_surname = write_surname()
-    new_phone = write_phone()
-    new_address = write_adress()
+def update_data():
+    name = input("Введите имя или фамилию человека, которого хотите изменить: ")
     with open('phonebook.txt', 'r', encoding='utf-8') as data:
         lines = data.readlines()
-    with open('phonebook.txt', 'w', encoding='utf-8') as data:
-        for line in lines:
-            if full_name in line:
-                data.write(f'{new_name} {new_surname}: {new_phone}\n{new_address}\n\n')
-            else:
-                data.write(line)
+    updated_contact = []
+    found = False
+    for line in lines:
+        if name.lower() in line.lower():
+            new_name = input("Введите новое имя: ")
+            new_last_name = input("Введите новую фамилию: ")
+            new_phone = input("Введите новый номер телефона: ")
+            updated_contact.append(f"{new_name} {new_last_name}: {new_phone}\n")
+            found = True
+        else:
+            updated_contact.append(line)
+    if found:
+        with open('phonebook.txt', 'w', encoding='utf-8') as data:
+            data.writelines(updated_contact)
+        print("Контакт успешно изменен.")
+    else:
+        print("Контакт не найден.")
 
-def delete_contact(full_name):
+def delete_data():
+    name = input("Введите имя или фамилию человека, которого хотите удалить: ")
     with open('phonebook.txt', 'r', encoding='utf-8') as data:
         lines = data.readlines()
-    with open('phonebook.txt', 'w', encoding='utf-8') as data:
-        for line in lines:
-            if full_name not in line:
-                data.write(line)
+    updated_contact = []
+    found = False
+    for line in lines:
+        if name.lower() not in line.lower():
+            updated_contact.append(line)
+        else:
+            found = True
+    if found:
+        with open('phonebook.txt', 'w', encoding='utf-8') as data:
+            data.writelines(updated_contact)
+        print("Контакт успешно удален.")
+    else:
+        print("Контакт не найден.")
 
 
-# update_contact()
-delete_contact('Роман Лузин')
+# update_data()  
+# delete_data() 
+
+  
+ 
